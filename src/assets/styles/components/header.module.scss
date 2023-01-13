@@ -1,0 +1,11 @@
+@use "../abstracts/mixins" as m;
+#appHeader {
+  @include m.flex(center, space-between);
+  .appName {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+  }
+  .modeToggler {
+    text-align: center;
+  }
+}

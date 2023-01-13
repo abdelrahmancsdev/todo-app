@@ -1,10 +1,13 @@
 import React from "react";
+import s from "../styles/components/header.module.scss";
 
 function Header() {
   return (
-    <header>
-      <h1>Todo</h1>
-      <div className="modeToggler">Dark</div>
+    <header id={s.appHeader}>
+      <h1 className={s.appName}>Todo</h1>
+      <button type="button" className={s.modeToggler}>
+        Dark
+      </button>
     </header>
   );
 }

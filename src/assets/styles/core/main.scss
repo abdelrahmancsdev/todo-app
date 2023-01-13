@@ -1,0 +1,42 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+#appContainer {
+  padding: 80px 20px;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-color: hsl(235, 21%, 11%);
+
+  &.dark {
+    --shadow: hsl(235, 21%, 11%);
+    --main-bg: hsl(235, 24%, 19%);
+    --text: hsl(234, 39%, 85%);
+    --hover: hsl(236, 33%, 92%);
+    --border: hsl(234, 11%, 52%);
+    --text2: hsl(233, 14%, 35%);
+    --app-bg: hsl(237, 14%, 26%);
+    background-image: url(../../images/bg-desktop-dark.jpg);
+  }
+  &.light {
+    --shadow: hsl(233, 11%, 84%);
+    --main-bg: hsl(0, 0%, 98%);
+    --text: hsl(235, 19%, 35%);
+    --hover: hsl(236, 33%, 92%);
+    --border: hsl(236, 33%, 92%);
+    --text2: hsl(236, 9%, 61%);
+    --app-bg: hsl(0, 0%, 98%);
+    background-image: url(../../images/bg-desktop-light.jpg);
+  }
+  #app {
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
+    color: var(--text);
+    > div,
+    > section,
+    > footer {
+      background-color: var(--app-bg);
+      padding: 20px;
+    }
+  }
+}
