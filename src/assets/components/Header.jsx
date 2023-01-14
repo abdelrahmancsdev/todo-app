@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import s from "../styles/components/header.module.scss";
+import { HeaderContext } from "../../App";
 
 function Header() {
+  const { theme, setTheme } = useContext(HeaderContext);
+  const themeToggler = () => {
+    if (theme === "dark") {
+      setTheme("light");
+      localStorage.theme = "light";
+    } else if (theme === "light") {
+      setTheme("dark");
+      localStorage.theme = "dark";
+    }
+  };
   return (
     <header id={s.appHeader}>
-      <h1 className={s.appName}>Todo</h1>
-      <button type="button" className={s.modeToggler}>
-        Dark
-      </button>
+      <h1 id={s.appName}>Todo</h1>
+      <button
+        type="button"
+        id={s.modeToggler}
+        className={s[theme]}
+        onClick={themeToggler}
+      />
     </header>
   );
 }

@@ -2,10 +2,9 @@
 @use "../abstracts/mixins" as m;
 
 #appContainer {
-  padding: 80px 20px;
+  padding: 78px 20px;
   min-height: 100vh;
   background-repeat: no-repeat;
-  background-color: hsl(235, 21%, 11%);
 
   &.dark {
     --shadow: hsl(235, 21%, 11%);
@@ -16,6 +15,7 @@
     --text2: hsl(233, 14%, 35%);
     --app-bg: hsl(237, 14%, 26%);
     background-image: url(../../images/bg-desktop-dark.jpg);
+    background-color: var(--main-bg);
   }
   &.light {
     --shadow: hsl(233, 11%, 84%);
@@ -26,6 +26,7 @@
     --text2: hsl(236, 9%, 61%);
     --app-bg: hsl(0, 0%, 98%);
     background-image: url(../../images/bg-desktop-light.jpg);
+    background-color: var(--app-bg);
   }
   #app {
     width: 100%;

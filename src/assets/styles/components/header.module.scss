@@ -1,11 +1,21 @@
 @use "../abstracts/mixins" as m;
 #appHeader {
   @include m.flex(center, space-between);
-  .appName {
+  margin-bottom: 45px;
+  #appName {
     text-transform: uppercase;
     letter-spacing: 10px;
+    color: #fff;
   }
-  .modeToggler {
-    text-align: center;
+  #modeToggler {
+    width: 26px;
+    height: 26px;
+    background-repeat: no-repeat;
+    &.dark {
+      background-image: url(../../images/icon-sun.svg);
+    }
+    &.light {
+      background-image: url(../../images/icon-moon.svg);
+    }
   }
 }
