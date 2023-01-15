@@ -1,8 +1,32 @@
-#createTodo {
-  #addTodo {
+@use "../abstracts/mixins" as m;
+
+#addTodo {
+  @include m.flex(center, center);
+  // gap: 20px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  #createTodo {
+    width: 27px;
+    height: 25px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    margin-right: 20px;
   }
   #todoInput {
     display: block;
     width: 100%;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text);
+    caret-color: var(--blue);
+    &:focus {
+      outline: none;
+    }
+    &,
+    &::placeholder {
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 18px;
+    }
   }
 }

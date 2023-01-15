@@ -5,7 +5,8 @@
   padding: 78px 20px;
   min-height: 100vh;
   background-repeat: no-repeat;
-
+  --blue: hsl(220, 98%, 61%);
+  --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
   &.dark {
     --shadow: hsl(235, 21%, 11%);
     --main-bg: hsl(235, 24%, 19%);
@@ -30,7 +31,7 @@
   }
   #app {
     width: 100%;
-    max-width: 550px;
+    max-width: 540px;
     margin: auto;
     color: var(--text);
     > div,

@@ -12,7 +12,7 @@
 //   --trans: 0.3s linear;
 // }
 body,
-button {
+%text {
   font-family: "Josefin Sans", sans-serif;
   color: var(--text-color);
   font-size: 18px;
@@ -24,6 +24,7 @@ a {
   text-decoration: none;
 }
 button {
+  @extend %text;
   border: none;
   background-color: transparent;
   cursor: pointer;
