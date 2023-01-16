@@ -6,14 +6,14 @@
   min-height: 100vh;
   background-repeat: no-repeat;
   --blue: hsl(220, 98%, 61%);
-  --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --gradient: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   &.dark {
     --shadow: hsl(235, 21%, 11%);
     --main-bg: hsl(235, 24%, 19%);
     --text: hsl(234, 39%, 85%);
     --hover: hsl(236, 33%, 92%);
-    --border: hsl(234, 11%, 52%);
-    --text2: hsl(233, 14%, 35%);
+    --text2: hsl(234, 11%, 52%);
+    --border: hsl(233, 14%, 35%);
     --app-bg: hsl(237, 14%, 26%);
     background-image: url(../../images/bg-desktop-dark.jpg);
     background-color: var(--main-bg);
@@ -23,8 +23,8 @@
     --main-bg: hsl(0, 0%, 98%);
     --text: hsl(235, 19%, 35%);
     --hover: hsl(236, 33%, 92%);
-    --border: hsl(236, 33%, 92%);
     --text2: hsl(236, 9%, 61%);
+    --border: hsl(236, 33%, 92%);
     --app-bg: hsl(0, 0%, 98%);
     background-image: url(../../images/bg-desktop-light.jpg);
     background-color: var(--app-bg);
@@ -34,11 +34,14 @@
     max-width: 540px;
     margin: auto;
     color: var(--text);
+    #todosContainer {
+      border-radius: 5px;
+      overflow: hidden;
+    }
     > div,
     > section,
     > footer {
       background-color: var(--app-bg);
-      padding: 20px;
     }
   }
 }

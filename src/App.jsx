@@ -16,6 +16,7 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [running, setRunning] = useState(false);
   const themeItems = useMemo(() => ({ theme, setTheme }), [theme]);
+
   useLayoutEffect(() => {
     if (!running) {
       if (localStorage.theme) {
@@ -34,8 +35,11 @@ function App() {
           <Header />
         </HeaderContext.Provider>
         <AddTodo />
-        <TodosArea />
-        <TodoOptions />
+        <div id="todosContainer">
+          <TodosArea />
+          <TodoOptions />
+        </div>
+        <p id="note">Drag and drop to reorder list</p>
       </div>
     </div>
   );

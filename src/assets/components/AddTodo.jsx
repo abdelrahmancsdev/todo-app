@@ -4,7 +4,7 @@ import s from "../styles/components/addTodos.module.scss";
 function AddTodo() {
   return (
     <div id={s.addTodo}>
-      <div id={s.createTodo} />
+      <button id={s.createTodo} />
       <input
         type="text"
         name="todoInput"
