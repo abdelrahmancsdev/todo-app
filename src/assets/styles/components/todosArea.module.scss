@@ -6,6 +6,7 @@
       @include m.flex(center, space-between);
       padding: 20px;
       border-bottom: 1px solid var(--border);
+
       .todoTitle {
         @include m.flex(center, space-between);
         .checkTodo {
@@ -43,6 +44,18 @@
       &:hover {
         .deleteItem {
           opacity: 1;
+        }
+      }
+      &.checked {
+        .checkTodo {
+          background-image: url(../../images/icon-check.svg), var(--gradient);
+          background-repeat: no-repeat;
+          background-position: center;
+          border: none;
+        }
+        .todoText {
+          text-decoration: line-through;
+          opacity: 0.25;
         }
       }
     }

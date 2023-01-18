@@ -4,19 +4,19 @@ import s from "../styles/components/todoOptions.module.scss";
 function TodoOptions() {
   return (
     <footer id={s.todoOptions}>
-      <p id="itemsLeft">1 items left</p>
-      <ul id="todoFilters">
-        <li role="presentation" className="filter active">
+      <p id={s.itemsLeft}>1 items left</p>
+      <ul id={s.todoFilters}>
+        <li role="presentation" className={`${s.filter} ${s.active}`}>
           All
         </li>
-        <li role="presentation" className="filter">
+        <li role="presentation" className={s.filter}>
           Active
         </li>
-        <li role="presentation" className="filter">
+        <li role="presentation" className={s.filter}>
           Completed
         </li>
       </ul>
-      <button>Clear Completed</button>
+      <button id={s.clearComp}>Clear Completed</button>
     </footer>
   );
 }

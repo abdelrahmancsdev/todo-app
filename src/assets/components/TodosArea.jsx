@@ -5,6 +5,13 @@ function TodosArea() {
   return (
     <section id={s.todosArea}>
       <ul id={s.todoList}>
+        <li className={`${s.todoItem} ${s.checked}`}>
+          <p role="presentation" className={s.todoTitle}>
+            <button className={s.checkTodo} />
+            <span className={s.todoText}>Test (Checked)</span>
+          </p>
+          <button className={s.deleteItem} />
+        </li>
         <li className={s.todoItem}>
           <p role="presentation" className={s.todoTitle}>
             <button className={s.checkTodo} />

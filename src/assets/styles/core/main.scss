@@ -43,5 +43,14 @@
     > footer {
       background-color: var(--app-bg);
     }
+    #todosContainer {
+      margin-bottom: 50px;
+      box-shadow: 0px 30px 30px 0px var(--shadow);
+    }
+    #note {
+      text-align: center;
+      color: var(--text2);
+      font-size: 14px;
+    }
   }
 }
