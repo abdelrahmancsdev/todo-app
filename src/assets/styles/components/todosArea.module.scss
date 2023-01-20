@@ -46,7 +46,7 @@
           opacity: 1;
         }
       }
-      &.checked {
+      &[data-checked="true"] {
         .checkTodo {
           background-image: url(../../images/icon-check.svg), var(--gradient);
           background-repeat: no-repeat;
