@@ -1,4 +1,5 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
+import { TodoListContext } from "../../App";
 import s from "../styles/components/todosArea.module.scss";
 import TodoItem from "./TodoItem";
 
@@ -11,7 +12,7 @@ const todoPlaceholder = [
   { name: "Complete Todo App Frontend Mentor", checked: false },
 ];
 function TodosArea() {
-  const [todoList, setTodoList] = useState([]);
+  const { todoList, setTodoList } = useContext(TodoListContext);
 
   useLayoutEffect(() => {
     if (!localStorage.todoList) {
