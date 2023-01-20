@@ -2,19 +2,20 @@
 
 #todosArea {
   #todoList {
+    min-height: 65px;
+
     .todoItem {
       @include m.flex(center, space-between);
       padding: 20px;
       border-bottom: 1px solid var(--border);
-
       .todoTitle {
         @include m.flex(center, space-between);
+        cursor: pointer;
         .checkTodo {
           width: 23px;
           height: 23px;
           border: 1px solid var(--border);
           border-radius: 50%;
-          margin-right: 20px;
           &:hover {
             border-color: var(--blue);
           }
@@ -28,6 +29,7 @@
         }
         .todoText {
           margin-top: 5px;
+          padding-left: 20px;
         }
       }
       .deleteItem {
