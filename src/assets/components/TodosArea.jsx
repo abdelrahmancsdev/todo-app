@@ -1,5 +1,5 @@
 import React, { useContext, useLayoutEffect } from "react";
-import { TodoListContext } from "../../App";
+import { TodoListContext, ViewContext } from "../../App";
 import s from "../styles/components/todosArea.module.scss";
 import TodoItem from "./TodoItem";
 
@@ -13,7 +13,7 @@ const todoPlaceholder = [
 ];
 function TodosArea() {
   const { todoList, setTodoList } = useContext(TodoListContext);
-
+  const { view } = useContext(ViewContext);
   useLayoutEffect(() => {
     if (!localStorage.todoList) {
       setTodoList(todoPlaceholder);
@@ -23,20 +23,58 @@ function TodosArea() {
     }
   }, []);
 
-  return (
-    <section id={s.todosArea}>
-      <ul id={s.todoList}>
-        {todoList.map((todo, i) => (
-          <TodoItem
-            key={i}
-            id={i + 1}
-            name={todo.name}
-            checked={todo.checked}
-          />
-        ))}
-      </ul>
-    </section>
-  );
+  if (view === "all") {
+    return (
+      <section id={s.todosArea}>
+        <ul id={s.todoList}>
+          {todoList.map((todo, i) => (
+            <TodoItem
+              key={i}
+              id={i + 1}
+              name={todo.name}
+              checked={todo.checked}
+            />
+          ))}
+        </ul>
+      </section>
+    );
+  }
+  if (view === "active") {
+    return (
+      <section id={s.todosArea}>
+        <ul id={s.todoList}>
+          {todoList
+            .filter((todo) => !todo.checked)
+            .map((todo, i) => (
+              <TodoItem
+                key={i}
+                id={i + 1}
+                name={todo.name}
+                checked={todo.checked}
+              />
+            ))}
+        </ul>
+      </section>
+    );
+  }
+  if (view === "completed") {
+    return (
+      <section id={s.todosArea}>
+        <ul id={s.todoList}>
+          {todoList
+            .filter((todo) => todo.checked)
+            .map((todo, i) => (
+              <TodoItem
+                key={i}
+                id={i + 1}
+                name={todo.name}
+                checked={todo.checked}
+              />
+            ))}
+        </ul>
+      </section>
+    );
+  }
 }
 
 export default TodosArea;

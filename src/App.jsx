@@ -12,12 +12,15 @@ import "./assets/styles/core/main.scss";
 
 export const HeaderContext = createContext(null);
 export const TodoListContext = createContext(null);
+export const ViewContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState("dark");
   const [todoList, setTodoList] = useState([]);
+  const [view, setView] = useState("all");
   const themeItems = useMemo(() => ({ theme, setTheme }), [theme]);
   const todoItems = useMemo(() => ({ todoList, setTodoList }), [todoList]);
+  const viewItems = useMemo(() => ({ view, setView }), [view]);
 
   useLayoutEffect(() => {
     if (localStorage.theme) {
@@ -34,10 +37,12 @@ function App() {
         </HeaderContext.Provider>
         <TodoListContext.Provider value={todoItems}>
           <AddTodo />
-          <div id="todosContainer">
-            <TodosArea />
-            <TodoOptions />
-          </div>
+          <ViewContext.Provider value={viewItems}>
+            <div id="todosContainer">
+              <TodosArea />
+              <TodoOptions />
+            </div>
+          </ViewContext.Provider>
         </TodoListContext.Provider>
         <p id="note">Drag and drop to reorder list</p>
       </div>

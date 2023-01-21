@@ -1,28 +1,56 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { TodoListContext } from "../../App";
+import { TodoListContext, ViewContext } from "../../App";
 import s from "../styles/components/todoOptions.module.scss";
 
 function TodoOptions() {
   const { todoList } = useContext(TodoListContext);
-  const todoCount = useRef(null);
+  const { setView } = useContext(ViewContext);
+  const countRef = useRef(null);
+  const changeFilter = (e) => {
+    const filters = document.querySelectorAll(`.${s.filter}`);
+    filters.forEach((filter) => filter.classList.remove(s.active));
+    if (e.target.dataset.filter === "all") {
+      setView("all");
+    } else if (e.target.dataset.filter === "active") {
+      setView("active");
+    } else if (e.target.dataset.filter === "completed") {
+      setView("completed");
+    }
+    e.target.classList.add(s.active);
+  };
   useEffect(() => {
     const newList = todoList.filter((todo) => !todo.checked);
-    todoCount.current.textContent = newList.length;
+    countRef.current.textContent = newList.length;
   }, [todoList]);
   return (
     <footer id={s.todoOptions}>
       <p id={s.itemsLeft}>
-        <span id={s.todoCount} ref={todoCount} />
+        <span id={s.todoCount} ref={countRef} />
         items left
       </p>
       <ul id={s.todoFilters}>
-        <li role="presentation" className={`${s.filter} ${s.active}`}>
+        <li
+          role="presentation"
+          className={`${s.filter} ${s.active}`}
+          onClick={changeFilter}
+          data-filter="all"
+        >
           All
         </li>
-        <li role="presentation" className={s.filter}>
+        <li
+          role="presentation"
+          className={s.filter}
+          onClick={changeFilter}
+          data-filter="active"
+        >
           Active
         </li>
-        <li role="presentation" className={s.filter}>
+        <li
+          role="presentation"
+          className={s.filter}
+          onClick={changeFilter}
+          data-filter="completed"
+        >
           Completed
         </li>
       </ul>
