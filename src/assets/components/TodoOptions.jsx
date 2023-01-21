@@ -3,7 +3,7 @@ import { TodoListContext, ViewContext } from "../../App";
 import s from "../styles/components/todoOptions.module.scss";
 
 function TodoOptions() {
-  const { todoList } = useContext(TodoListContext);
+  const { todoList, setTodoList } = useContext(TodoListContext);
   const { setView } = useContext(ViewContext);
   const countRef = useRef(null);
   const changeFilter = (e) => {
@@ -17,6 +17,11 @@ function TodoOptions() {
       setView("completed");
     }
     e.target.classList.add(s.active);
+  };
+  const clearCompleted = () => {
+    const newList = todoList.filter((todo) => !todo.checked);
+    setTodoList(newList);
+    localStorage.todoList = JSON.stringify(newList);
   };
   useEffect(() => {
     const newList = todoList.filter((todo) => !todo.checked);
@@ -54,7 +59,9 @@ function TodoOptions() {
           Completed
         </li>
       </ul>
-      <button id={s.clearComp}>Clear Completed</button>
+      <button id={s.clearComp} onClick={clearCompleted}>
+        Clear Completed
+      </button>
     </footer>
   );
 }
