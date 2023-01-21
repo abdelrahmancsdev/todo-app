@@ -5,9 +5,9 @@ import s from "../styles/components/todosArea.module.scss";
 function TodoItem({ id, name, checked }) {
   const { todoList, setTodoList } = useContext(TodoListContext);
   const checkTodo = (e) => {
-    const newList = todoList.map((todo, i) => {
-      if (+e.target.parentElement.parentElement.id === i + 1) {
-        return { name: todo.name, checked: !todo.checked };
+    const newList = todoList.map((todo) => {
+      if (+e.target.parentElement.parentElement.id === todo.id) {
+        return { name: todo.name, checked: !todo.checked, id: todo.id };
       }
       return todo;
     });
@@ -16,7 +16,7 @@ function TodoItem({ id, name, checked }) {
   };
   const deleteTodo = (e) => {
     const newList = todoList.filter(
-      (todo, i) => +e.target.parentElement.id !== i + 1
+      (todo) => +e.target.parentElement.id !== todo.id
     );
     setTodoList(newList);
     localStorage.todoList = JSON.stringify(newList);

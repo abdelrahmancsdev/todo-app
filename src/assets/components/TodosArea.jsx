@@ -4,12 +4,12 @@ import s from "../styles/components/todosArea.module.scss";
 import TodoItem from "./TodoItem";
 
 const todoPlaceholder = [
-  { name: "Complete Online JavaScript Course", checked: true },
-  { name: "Jog around the park 3x", checked: false },
-  { name: "10 minutes meditation", checked: false },
-  { name: "Read for 1 hour", checked: false },
-  { name: "Pick up groceries", checked: false },
-  { name: "Complete Todo App Frontend Mentor", checked: false },
+  { name: "Complete Online JavaScript Course", checked: true, id: 1 },
+  { name: "Jog around the park 3x", checked: false, id: 2 },
+  { name: "10 minutes meditation", checked: false, id: 3 },
+  { name: "Read for 1 hour", checked: false, id: 4 },
+  { name: "Pick up groceries", checked: false, id: 5 },
+  { name: "Complete Todo App Frontend Mentor", checked: false, id: 6 },
 ];
 function TodosArea() {
   const { todoList, setTodoList } = useContext(TodoListContext);
@@ -30,7 +30,7 @@ function TodosArea() {
           {todoList.map((todo, i) => (
             <TodoItem
               key={i}
-              id={i + 1}
+              id={todo.id}
               name={todo.name}
               checked={todo.checked}
             />
@@ -48,7 +48,7 @@ function TodosArea() {
             .map((todo, i) => (
               <TodoItem
                 key={i}
-                id={i + 1}
+                id={todo.id}
                 name={todo.name}
                 checked={todo.checked}
               />
@@ -66,7 +66,7 @@ function TodosArea() {
             .map((todo, i) => (
               <TodoItem
                 key={i}
-                id={i + 1}
+                id={todo.id}
                 name={todo.name}
                 checked={todo.checked}
               />
