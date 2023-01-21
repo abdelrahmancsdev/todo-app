@@ -8,6 +8,9 @@
 
   #itemsLeft {
     margin-right: 40px;
+    #todoCount {
+      margin-right: 5px;
+    }
   }
   #todoFilters {
     @include m.flex(center, center);

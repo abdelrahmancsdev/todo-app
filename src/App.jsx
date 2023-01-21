@@ -15,22 +15,17 @@ export const TodoListContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState("dark");
-  const [running, setRunning] = useState(false);
   const [todoList, setTodoList] = useState([]);
   const themeItems = useMemo(() => ({ theme, setTheme }), [theme]);
   const todoItems = useMemo(() => ({ todoList, setTodoList }), [todoList]);
 
   useLayoutEffect(() => {
-    if (!running) {
-      if (localStorage.theme) {
-        setTheme(localStorage.theme);
-        setRunning(true);
-      } else {
-        localStorage.theme = theme;
-        setRunning(true);
-      }
+    if (localStorage.theme) {
+      setTheme(localStorage.theme);
+    } else {
+      localStorage.theme = theme;
     }
-  }, [theme, running]);
+  }, []);
   return (
     <div id="appContainer" className={theme}>
       <div id="app">

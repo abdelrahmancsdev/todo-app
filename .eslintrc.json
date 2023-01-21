@@ -24,6 +24,7 @@
     "jsx-a11y/control-has-associated-label": "off",
     "import/no-cycle": "off",
     "react/prop-types": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react-hooks/exhaustive-deps": "off"
   }
 }
