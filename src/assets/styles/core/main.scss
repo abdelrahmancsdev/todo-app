@@ -2,11 +2,14 @@
 @use "../abstracts/mixins" as m;
 
 #appContainer {
-  padding: 78px 20px;
+  padding: 78px 27px 38px;
   min-height: 100vh;
   background-repeat: no-repeat;
+  background-position: center top;
   --blue: hsl(220, 98%, 61%);
   --gradient: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  user-select: none;
+
   &.dark {
     --shadow: hsl(235, 21%, 11%);
     --main-bg: hsl(235, 24%, 19%);
@@ -36,7 +39,6 @@
     color: var(--text);
     #todosContainer {
       border-radius: 5px;
-      overflow: hidden;
     }
     > div,
     > section,
@@ -51,6 +53,41 @@
       text-align: center;
       color: var(--text2);
       font-size: 14px;
+    }
+  }
+}
+@media (min-width: 1441px) {
+  #appContainer {
+    max-width: 1440px;
+    margin: auto;
+    border: 1px solid;
+    border-color: transparent #ccc transparent;
+  }
+}
+
+@media (max-width: 500px) {
+  #appContainer {
+    #app {
+      #todosContainer {
+        margin-bottom: 120px;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  #appContainer {
+    padding: 47px 27px 38px;
+    &.light {
+      background-image: url(../../images/bg-mobile-light.jpg);
+    }
+    &.dark {
+      background-image: url(../../images/bg-mobile-dark.jpg);
+    }
+    #app {
+      #todosContainer {
+        margin-bottom: 110px;
+      }
     }
   }
 }

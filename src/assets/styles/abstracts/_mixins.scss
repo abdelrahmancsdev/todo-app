@@ -6,7 +6,7 @@
 @mixin grid($align, $justify) {
   display: grid;
   align-items: $align;
-  justify-items: $justify;
+  justify-content: $justify;
 }
 @mixin center-pos($dir) {
   @if $dir == "a" {

@@ -4,8 +4,9 @@
   margin-bottom: 42px;
   #appName {
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     color: #fff;
+    font-size: 40px;
   }
   #modeToggler {
     width: 26px;
@@ -16,6 +17,34 @@
     }
     &.light {
       background-image: url(../../images/icon-moon.svg);
+    }
+  }
+}
+@media (max-width: 375px) {
+  #appHeader {
+    margin-bottom: 36px;
+    #appName {
+      font-size: 32px;
+      letter-spacing: 13px;
+    }
+    #modeToggler {
+      width: 23px;
+      height: 23px;
+      background-size: 100%;
+    }
+  }
+}
+@media (max-width: 375px) {
+  #appHeader {
+    margin-bottom: 32px;
+    #appName {
+      font-size: 26px;
+      letter-spacing: 10px;
+    }
+    #modeToggler {
+      width: 20px;
+      height: 20px;
+      background-size: 100%;
     }
   }
 }
