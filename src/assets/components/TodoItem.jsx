@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { TodoListContext } from "../../App";
 import s from "../styles/components/todosArea.module.scss";
 
-function TodoItem({ id, name, checked }) {
+function TodoItem({ name }) {
   const { todoList, setTodoList } = useContext(TodoListContext);
   const checkTodo = (e) => {
     const newList = todoList.map((todo) => {
@@ -22,13 +22,13 @@ function TodoItem({ id, name, checked }) {
     localStorage.todoList = JSON.stringify(newList);
   };
   return (
-    <li id={id} className={s.todoItem} data-checked={checked}>
+    <>
       <p role="presentation" className={s.todoTitle} onClick={checkTodo}>
         <button className={s.checkTodo} />
         <span className={s.todoText}>{name}</span>
       </p>
       <button className={s.deleteItem} onClick={deleteTodo} />
-    </li>
+    </>
   );
 }
 

@@ -1,4 +1,7 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext, useLayoutEffect } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { TodoListContext, ViewContext } from "../../App";
 import s from "../styles/components/todosArea.module.scss";
 import TodoItem from "./TodoItem";
@@ -23,55 +26,137 @@ function TodosArea() {
     }
   }, []);
 
+  const handleDrag = (result) => {
+    const dragIndex = result.source.index;
+    const dropIndex = result.destination.index;
+    const itemsList = [...todoList];
+    const [dragedItem] = itemsList.splice(dragIndex, 1);
+    itemsList.splice(dropIndex, 0, dragedItem);
+    setTodoList(itemsList);
+    localStorage.todoList = JSON.stringify(itemsList);
+  };
+
   if (view === "all") {
     return (
       <section id={s.todosArea}>
-        <ul id={s.todoList}>
-          {todoList.map((todo, i) => (
-            <TodoItem
-              key={i}
-              id={todo.id}
-              name={todo.name}
-              checked={todo.checked}
-            />
-          ))}
-        </ul>
+        <DragDropContext onDragEnd={handleDrag}>
+          <Droppable droppableId="droppableTodos">
+            {(provided) => (
+              <ul
+                id={s.todoList}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {todoList.map((todo, i) => (
+                  <Draggable
+                    key={todo.id}
+                    draggableId={String(todo.id)}
+                    index={i}
+                    type="TASK"
+                  >
+                    {(provided) => (
+                      <li
+                        id={todo.id}
+                        className={s.todoItem}
+                        data-checked={todo.checked}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <TodoItem name={todo.name} />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       </section>
     );
   }
   if (view === "active") {
     return (
       <section id={s.todosArea}>
-        <ul id={s.todoList}>
-          {todoList
-            .filter((todo) => !todo.checked)
-            .map((todo, i) => (
-              <TodoItem
-                key={i}
-                id={todo.id}
-                name={todo.name}
-                checked={todo.checked}
-              />
-            ))}
-        </ul>
+        <DragDropContext onDragEnd={handleDrag}>
+          <Droppable droppableId="droppableTodos">
+            {(provided) => (
+              <ul
+                id={s.todoList}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {todoList
+                  .filter((todo) => !todo.checked)
+                  .map((todo, i) => (
+                    <Draggable
+                      key={todo.id}
+                      draggableId={String(todo.id)}
+                      index={i}
+                      type="TASK"
+                    >
+                      {(provided) => (
+                        <li
+                          id={todo.id}
+                          className={s.todoItem}
+                          data-checked={todo.checked}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TodoItem name={todo.name} />
+                        </li>
+                      )}
+                    </Draggable>
+                  ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       </section>
     );
   }
   if (view === "completed") {
     return (
       <section id={s.todosArea}>
-        <ul id={s.todoList}>
-          {todoList
-            .filter((todo) => todo.checked)
-            .map((todo, i) => (
-              <TodoItem
-                key={i}
-                id={todo.id}
-                name={todo.name}
-                checked={todo.checked}
-              />
-            ))}
-        </ul>
+        <DragDropContext onDragEnd={handleDrag}>
+          <Droppable droppableId="droppableTodos">
+            {(provided) => (
+              <ul
+                id={s.todoList}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {todoList
+                  .filter((todo) => todo.checked)
+                  .map((todo, i) => (
+                    <Draggable
+                      key={todo.id}
+                      draggableId={String(todo.id)}
+                      index={i}
+                      type="TASK"
+                    >
+                      {(provided) => (
+                        <li
+                          id={todo.id}
+                          className={s.todoItem}
+                          data-checked={todo.checked}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TodoItem name={todo.name} />
+                        </li>
+                      )}
+                    </Draggable>
+                  ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       </section>
     );
   }
