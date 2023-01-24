@@ -1,7 +1,7 @@
 @use "../abstracts/mixins" as m;
 #appHeader {
   @include m.flex(center, space-between);
-  margin-bottom: 42px;
+  margin-bottom: 40px;
   #appName {
     text-transform: uppercase;
     letter-spacing: 15px;
@@ -20,9 +20,9 @@
     }
   }
 }
-@media (max-width: 375px) {
+@media (max-width: 500px) {
   #appHeader {
-    margin-bottom: 36px;
+    margin-bottom: 35px;
     #appName {
       font-size: 32px;
       letter-spacing: 13px;
@@ -36,7 +36,7 @@
 }
 @media (max-width: 375px) {
   #appHeader {
-    margin-bottom: 32px;
+    margin-bottom: 30px;
     #appName {
       font-size: 26px;
       letter-spacing: 10px;
