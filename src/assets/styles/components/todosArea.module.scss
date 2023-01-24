@@ -3,12 +3,14 @@
 #todosArea {
   #todoList {
     min-height: 65px;
-
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
     .todoItem {
       @include m.grid(center, space-between);
       grid-template-columns: auto auto;
       gap: 10px;
       padding: 20px;
+      background-color: var(--app-bg);
       border-bottom: 1px solid var(--border);
       .todoTitle {
         @include m.grid(center, space-between);

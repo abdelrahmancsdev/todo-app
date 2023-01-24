@@ -27,13 +27,49 @@ function TodosArea() {
   }, []);
 
   const handleDrag = (result) => {
-    const dragIndex = result.source.index;
-    const dropIndex = result.destination.index;
-    const itemsList = [...todoList];
-    const [dragedItem] = itemsList.splice(dragIndex, 1);
-    itemsList.splice(dropIndex, 0, dragedItem);
-    setTodoList(itemsList);
-    localStorage.todoList = JSON.stringify(itemsList);
+    if (view === "all") {
+      const dragIndex = result.source.index;
+      const dropIndex = result.destination.index;
+      const itemsList = [...todoList];
+      const [dragedItem] = itemsList.splice(dragIndex, 1);
+      itemsList.splice(dropIndex, 0, dragedItem);
+      setTodoList(itemsList);
+      localStorage.todoList = JSON.stringify(itemsList);
+    } else if (view === "active") {
+      let dragIndex = result.source.index;
+      let dropIndex = result.destination.index;
+      const filteredList = todoList.filter(({ checked }) => !checked);
+      const itemsList = [...todoList];
+      itemsList.forEach(({ id }, i) => {
+        if (id === filteredList[result.source.index].id) {
+          dragIndex = i;
+        }
+        if (id === filteredList[result.destination.index].id) {
+          dropIndex = i;
+        }
+      });
+      const [dragedItem] = itemsList.splice(dragIndex, 1);
+      itemsList.splice(dropIndex, 0, dragedItem);
+      setTodoList(itemsList);
+      localStorage.todoList = JSON.stringify(itemsList);
+    } else if (view === "completed") {
+      let dragIndex = result.source.index;
+      let dropIndex = result.destination.index;
+      const filteredList = todoList.filter(({ checked }) => checked);
+      const itemsList = [...todoList];
+      itemsList.forEach(({ id }, i) => {
+        if (id === filteredList[result.source.index].id) {
+          dragIndex = i;
+        }
+        if (id === filteredList[result.destination.index].id) {
+          dropIndex = i;
+        }
+      });
+      const [dragedItem] = itemsList.splice(dragIndex, 1);
+      itemsList.splice(dropIndex, 0, dragedItem);
+      setTodoList(itemsList);
+      localStorage.todoList = JSON.stringify(itemsList);
+    }
   };
 
   if (view === "all") {
@@ -50,7 +86,7 @@ function TodosArea() {
                 {todoList.map((todo, i) => (
                   <Draggable
                     key={todo.id}
-                    draggableId={String(todo.id)}
+                    draggableId={todo.id.toString()}
                     index={i}
                     type="TASK"
                   >
@@ -92,7 +128,7 @@ function TodosArea() {
                   .map((todo, i) => (
                     <Draggable
                       key={todo.id}
-                      draggableId={String(todo.id)}
+                      draggableId={todo.id.toString()}
                       index={i}
                       type="TASK"
                     >
@@ -134,7 +170,7 @@ function TodosArea() {
                   .map((todo, i) => (
                     <Draggable
                       key={todo.id}
-                      draggableId={String(todo.id)}
+                      draggableId={todo.id.toString()}
                       index={i}
                       type="TASK"
                     >

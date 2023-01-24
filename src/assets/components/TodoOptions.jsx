@@ -4,11 +4,11 @@ import s from "../styles/components/todoOptions.module.scss";
 
 function TodoOptions() {
   const { todoList, setTodoList } = useContext(TodoListContext);
-  const { setView } = useContext(ViewContext);
+  const { view, setView } = useContext(ViewContext);
   const countRef = useRef(null);
   const changeFilter = (e) => {
-    const filters = document.querySelectorAll(`.${s.filter}`);
-    filters.forEach((filter) => filter.classList.remove(s.active));
+    // const filters = document.querySelectorAll(`.${s.filter}`);
+    // filters.forEach((filter) => filter.classList.remove(s.active));
     if (e.target.dataset.filter === "all") {
       setView("all");
     } else if (e.target.dataset.filter === "active") {
@@ -33,10 +33,10 @@ function TodoOptions() {
         <span id={s.todoCount} ref={countRef} />
         items left
       </p>
-      <ul id={s.todoFilters}>
+      <ul id={s.todoFilters} data-filter={view}>
         <li
           role="presentation"
-          className={`${s.filter} ${s.active}`}
+          className={`${s.filter} ${view === "all" ? s.active : ""}`}
           onClick={changeFilter}
           data-filter="all"
         >
@@ -44,7 +44,7 @@ function TodoOptions() {
         </li>
         <li
           role="presentation"
-          className={s.filter}
+          className={`${s.filter} ${view === "active" ? s.active : ""}`}
           onClick={changeFilter}
           data-filter="active"
         >
@@ -52,7 +52,7 @@ function TodoOptions() {
         </li>
         <li
           role="presentation"
-          className={s.filter}
+          className={`${s.filter} ${view === "completed" ? s.active : ""}`}
           onClick={changeFilter}
           data-filter="completed"
         >
