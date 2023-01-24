@@ -6,6 +6,7 @@
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center top;
+  background-size: auto, 100% 300px;
   --blue: hsl(220, 98%, 61%);
   --gradient: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   user-select: none;
@@ -18,7 +19,7 @@
     --text2: hsl(234, 11%, 52%);
     --border: hsl(233, 14%, 35%);
     --app-bg: hsl(237, 14%, 26%);
-    background-image: url(../../images/bg-desktop-dark.jpg);
+    background-image: url(../../images/bg-desktop-dark.jpg), var(--gradient);
     background-color: var(--main-bg);
   }
   &.light {
@@ -29,7 +30,7 @@
     --text2: hsl(236, 9%, 61%);
     --border: hsl(236, 33%, 92%);
     --app-bg: hsl(0, 0%, 98%);
-    background-image: url(../../images/bg-desktop-light.jpg);
+    background-image: url(../../images/bg-desktop-light.jpg), var(--gradient);
     background-color: var(--app-bg);
   }
   #app {
@@ -78,11 +79,13 @@
 @media (max-width: 375px) {
   #appContainer {
     padding: 47px 27px 38px;
+    background-size: auto, 100% 200px;
+
     &.light {
-      background-image: url(../../images/bg-mobile-light.jpg);
+      background-image: url(../../images/bg-mobile-light.jpg), var(--gradient);
     }
     &.dark {
-      background-image: url(../../images/bg-mobile-dark.jpg);
+      background-image: url(../../images/bg-mobile-dark.jpg), var(--gradient);
     }
     #app {
       #todosContainer {
