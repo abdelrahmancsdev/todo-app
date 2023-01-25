@@ -3,7 +3,6 @@
 #addTodo {
   @include m.grid(center, center);
   grid-template-columns: auto 1fr;
-  // gap: 20px;
   margin-bottom: 25px;
   border-radius: 5px;
   padding: 20px;

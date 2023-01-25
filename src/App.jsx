@@ -8,6 +8,7 @@ import AddTodo from "./assets/components/AddTodo";
 import Header from "./assets/components/Header";
 import TodoOptions from "./assets/components/TodoOptions";
 import TodosArea from "./assets/components/TodosArea";
+import Attribution from "./assets/components/Attribution";
 import "./assets/styles/core/main.scss";
 
 export const HeaderContext = createContext(null);
@@ -46,6 +47,7 @@ function App() {
         </TodoListContext.Provider>
         <p id="note">Drag and drop to reorder list</p>
       </div>
+      <Attribution />
     </div>
   );
 }

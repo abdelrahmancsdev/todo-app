@@ -2,7 +2,7 @@
 @use "../abstracts/mixins" as m;
 
 #appContainer {
-  padding: 75px 25px 38px;
+  padding: 75px 25px 25px;
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center top;
@@ -53,6 +53,7 @@
       text-align: center;
       color: var(--text2);
       font-size: 14px;
+      margin-bottom: 75px;
     }
   }
 }
@@ -77,7 +78,7 @@
 
 @media (max-width: 375px) {
   #appContainer {
-    padding: 45px 25px 38px;
+    padding: 45px 25px 25px;
     background-size: auto, 100% 200px;
 
     &.light {
